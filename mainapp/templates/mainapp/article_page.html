@@ -1,0 +1,30 @@
+{% extends "mainapp/base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}{{ self.title }}{% endblock title %}
+
+{% block content %}
+	{% image self.feed_image fill-1920x299-c100 as banner_image %}
+	<header style="height: {{banner_image.height}}px; padding-bottom: 20px">
+		<div style="background: url({{banner_image.url}});height: {{banner_image.height}}px;filter:brightness(30%);")>
+			
+		</div>
+		<p style="line-height: {{banner_image.height}}px; text-align: center; color:white; font-style:bold; font-size:50px; position: absolute; top: 55px; width: 100%">{{ self.title }}</p>
+	</header>
+	<hr>
+	<div class="col-md-8 mx-auto">
+    {% with blocks=self.body %}
+    	{% for block in blocks %}
+            {% if block.block_type == 'heading' %}
+                <h2>{{ block.value }}</h2>
+            {% else %}
+               <section class="block-{{ block.block_type }}">
+                   {{ block }}
+               </section>
+            {% endif %}
+        {% endfor %}
+    
+    {% endwith %}
+	</div>
+	<hr>
+{% endblock %}
