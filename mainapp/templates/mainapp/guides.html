@@ -7,52 +7,76 @@
 <div class="container">
 
   <!-- Page Heading/Breadcrumbs -->
-  <h1 class="mt-4 mb-3">Services
-    <small>Subheading</small>
+  <h1 class="mt-4 mb-3">Guides
+    <small>Tout savoir sur les mécaniques du jeu</small>
   </h1>
 
   <ol class="breadcrumb">
     <li class="breadcrumb-item">
-      <a href="index.html">Home</a>
+      <a href="{% url 'mainapp:index' %}">Accueil</a>
     </li>
-    <li class="breadcrumb-item active">Services</li>
+    <li class="breadcrumb-item active">Guides</li>
   </ol>
 
   <!-- Image Header -->
-  <img class="img-fluid rounded mb-4" src="http://placehold.it/1200x300" alt="">
+  <img class="img-fluid rounded mb-4" src="/images/uwfwOYLtb8ikkZ-34QMRieisn0g=/2/fill-1200x300-c100/" alt="">
 
   <!-- Marketing Icons Section -->
   <div class="row">
+  {% for guide in last_guides %}
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
+        <h4 class="card-header">{{ guide.title }}</h4>
         <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          <p class="card-text">{{ guide.articlepage.description }}</p>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
+          <a href="{{ guide.url }}" class="btn btn-primary">Lire</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Les éléments</h4>
+        <div class="card-body">
+          <p class="card-text">Les éléments: leurs effets, leurs faiblesses, leurs résistances, leurs impact sur les structures.</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Lire</a>
         </div>
       </div>
     </div>
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
+        <h4 class="card-header">Les carcasses</h4>
         <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis ipsam eos, nam perspiciatis natus commodi similique totam consectetur praesentium molestiae atque exercitationem ut consequuntur, sed eveniet, magni nostrum sint fuga.</p>
+          <p class="card-text">Quel genre de carcasses existent-ils ? Comment les combattres efficacement ?</p>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
+          <a href="#" class="btn btn-primary">Lire</a>
         </div>
       </div>
     </div>
     <div class="col-lg-4 mb-4">
       <div class="card h-100">
-        <h4 class="card-header">Card Title</h4>
+        <h4 class="card-header">Les Classes</h4>
         <div class="card-body">
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          <p class="card-text">Leurs points fort, leurs point faibles, leurs utilité au sein d'une équipe, leurs synergies en section, etc</p>
         </div>
         <div class="card-footer">
-          <a href="#" class="btn btn-primary">Learn More</a>
+          <a href="#" class="btn btn-primary">Lire</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <h4 class="card-header">Comment bien appréhender la section de survivant</h4>
+        <div class="card-body">
+          <p class="card-text">Que faut il monter en priorité, que dois-je privilégié (bonus ou personnalité) ?</p>
+        </div>
+        <div class="card-footer">
+          <a href="#" class="btn btn-primary">Lire</a>
         </div>
       </div>
     </div>

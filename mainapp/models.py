@@ -18,6 +18,7 @@ class ArticlePage(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    description = models.CharField(max_length=255)
     body = StreamField([
         ('heading', blocks.CharBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
@@ -27,6 +28,7 @@ class ArticlePage(Page):
     ],null=True,blank=True)
 
     content_panels = Page.content_panels + [
+        FieldPanel('description'),
         StreamFieldPanel('body'),
     ]
 

@@ -7,12 +7,12 @@ from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import validate_email
 from wagtail.core.models import Page
-from .models import ArticlePage
+from .models import ArticlePage, HomePage
 
 def index(request):
     """Return Index View"""
     context = {
-        'last_articles': Page.objects.filter(numchild=0).order_by('-first_published_at')[:6]
+        'last_articles': HomePage.objects.get(title='Articles').get_descendants().order_by('-first_published_at')[:6]
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -22,7 +22,10 @@ def about(request):
 
 def guides(request):
     """Return Guides View"""
-    return render(request, 'mainapp/guides.html')
+    context = {
+        'last_guides': HomePage.objects.get(title='Guides').get_descendants().order_by('-first_published_at')[:6]
+    }
+    return render(request, 'mainapp/guides.html', context)
 
 def streamers(request):
     """Return Streamers View"""
