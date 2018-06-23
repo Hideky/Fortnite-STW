@@ -10,6 +10,7 @@ from wagtail.core import blocks
 
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.embeds.blocks import EmbedBlock
+from wagtail.documents.blocks import DocumentChooserBlock
 
 from wagtail.admin.edit_handlers import FieldPanel, FieldRowPanel,MultiFieldPanel, \
     InlinePanel, PageChooserPanel, StreamFieldPanel
@@ -18,6 +19,8 @@ class ColumnBlock(blocks.StreamBlock):
     heading = blocks.CharBlock(classname="full title")
     paragraph = blocks.RichTextBlock()
     image = ImageChooserBlock()
+    rawhtml = blocks.RawHTMLBlock()
+    document = DocumentChooserBlock()
 
     class Meta:
         template = 'mainapp/blocks/column.html'

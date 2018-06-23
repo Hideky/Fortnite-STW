@@ -8,21 +8,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="icon" type="image/png" href="{% static 'mainapp/img/favicon.png' %}" />
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'mainapp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{% static 'mainapp/css/modern-business.css' %}" rel="stylesheet">
+    <link href="{% static 'mainapp/css/main.css' %}" rel="stylesheet">
 
   </head>
 
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
       <div class="container">
         <a class="navbar-brand" href="{% url 'mainapp:index' %}">Fortnite-STW.FR</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,7 +56,7 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-4">
       <div class="container">
         <p class="m-0 text-center text-white">&copy; Copyright 2018 Fortnite STW FR</p>
         <p class="m-0 text-center text-white">Hideky</p>

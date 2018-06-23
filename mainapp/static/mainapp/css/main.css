@@ -1,0 +1,82 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+@font-face {
+    font-family: "Burbank";
+    src: url("../fonts/Burbank Big Condensed Black.otf") format("opentype");
+}
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.navbar, footer {
+  background: #202020 !important;
+}
+
+.navbar-brand {
+  font-family: "Burbank";
+  font-size: 30px;
+  letter-spacing: 0.5px;
+  color: #f1f1f1;
+  line-height: 30px;
+}
+
+.carousel-item {
+  height: 40vh;
+  min-height: 200px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.carousel-title {
+  font-family: "Burbank";
+  font-size: 50px;
+  letter-spacing: 0.5px;
+  color: #f1f1f1;
+  text-shadow: 2px 2px #000000;
+  line-height: 30px;
+}
+
+.carousel-description {
+  font-size: 20px;
+}
+
+.carousel-item a{
+  text-decoration: none!important;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+.article-title {
+  text-align: center; 
+  position: absolute; 
+  top: 55px;
+  width: 100%;
+  font-family: "Burbank";
+  font-size: 50px;
+  letter-spacing: 0.5px;
+  color: #f1f1f1;
+  text-shadow: 2px 2px #000000;
+  line-height: 30px;
+}
+
+.article-thumbnail {
+  filter:brightness(50%);
+  background-size: 100%;
+}
+

@@ -26,8 +26,8 @@
       <div class="carousel-item" style="background-image: url('{{banner_image.url}}')">
       {% endif %}
         <div class="carousel-caption d-none d-md-block">
-          <a href="{{article.url}}"><h3>{{ article.title }}</h3></a>
-          <p>{{ article.articlepage.description }}</p>
+          <a href="{{article.url}}"><h3 class="carousel-title">{{ article.title }}</h3></a>
+          <p class="carousel-description">{{ article.articlepage.description }}</p>
         </div>
       </div>
       {% endfor %}
@@ -87,7 +87,35 @@
     </div>
   </div> -->
   <!-- /.row -->
-
+  <ul class="pagination justify-content-center">
+    {% if last_articles.has_previous %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ last_articles.previous_page_number }}" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    {% endif %}
+    {% for i in last_articles.paginator.page_range %}
+    {% if i == last_articles.number %}
+    <li class="page-item active">
+      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+    </li>
+    {% else %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+    {% if last_articles.has_next %}
+    <li class="page-item">
+      <a class="page-link" href="?page={{ last_articles.next_page_number }}" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+    {% endif %}
+  </ul>
   <hr>
 
 </div>

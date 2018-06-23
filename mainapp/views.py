@@ -6,13 +6,18 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.core.validators import validate_email
+from django.core.paginator import Paginator
 from wagtail.core.models import Page
-from .models import ArticlePage, HomePage
+from .models import ArticlePage, GuidePage, AnswerPage
+import requests
 
 def index(request):
     """Return Index View"""
+    articles = ArticlePage.objects.all().order_by('-first_published_at')
+    paginator = Paginator(articles, 6)
+    page = request.GET.get('page')
     context = {
-        'last_articles': HomePage.objects.get(title='Articles').get_descendants().order_by('-first_published_at')[:6]
+        'last_articles': paginator.get_page(page)
     }
     return render(request, 'mainapp/index.html', context)
 
@@ -22,46 +27,32 @@ def about(request):
 
 def guides(request):
     """Return Guides View"""
+    articles = GuidePage.objects.all().order_by('-first_published_at')
+    paginator = Paginator(articles, 6)
+    page = request.GET.get('page')
     context = {
-        'last_guides': HomePage.objects.get(title='Guides').get_descendants().order_by('-first_published_at')[:6]
+        'last_guides': paginator.get_page(page)
     }
     return render(request, 'mainapp/guides.html', context)
 
 def streamers(request):
     """Return Streamers View"""
-    return render(request, 'mainapp/streamers.html')
+    streamers = requests.get("https://api.twitch.tv/kraken/streams/?community_id=ad656dbf-b45e-4b4c-8265-6917fc55e0a1", headers={'Client-ID': 'wsrzzhn3ssyklusb3esisf2iz96xu9', 'Accept': 'application/vnd.twitchtv.v5+json'}).json()['streams']
+    paginator = Paginator(streamers, 9)
+    page = request.GET.get('page')
+    context = {
+        'streamers': paginator.get_page(page)
+    }
+    return render(request, 'mainapp/streamers.html', context)
 
 def faq(request):
     """Return FAQ View"""
-    return render(request, 'mainapp/faq.html')
+    answers = AnswerPage.objects.all()
+    context = {
+        'answers': answers
+    }
+    return render(request, 'mainapp/faq.html', context)
 
 def contact(request):
     """Return Contact View"""
     return render(request, 'mainapp/contact.html')
-
-# def signup(request):
-#     """Return Signup View"""
-#     if request.method == 'POST':
-#         form = UserCreationForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             username = form.cleaned_data.get('username')
-#             raw_password = form.cleaned_data.get('password1')
-#             user = authenticate(username=username, password=raw_password)
-#             login(request, user)
-#             return redirect('/')
-#     else:
-#         form = UserCreationForm()
-#     return render(request, 'main/signup.html', {'form': form})
-
-# def account(request):
-#     """Return Account View"""
-#     if request.user.is_authenticated:
-#         if request.method == 'POST' and 'descriptionchange' in request.POST:
-#             try:
-#                 request.user.profile.description = request.POST.get('description')
-#                 request.user.save()
-#             except Exception:
-#                 pass
-#         return render(request, 'main/account.html')
-#     return render(request, 'main/notlogged.html', status=401)
