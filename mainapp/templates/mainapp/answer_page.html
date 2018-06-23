@@ -1,0 +1,41 @@
+{% extends 'mainapp/base.html' %}
+{% load static wagtailcore_tags %}
+{% block title %}FAQ{% endblock %}
+{% block content %}
+
+<!-- Page Content -->
+<div class="container">
+
+  <!-- Page Heading/Breadcrumbs -->
+  <h1 class="mt-4 mb-3">FAQ
+    <small>Questions courantes</small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a href="{% url 'mainapp:index' %}">Accueil</a>
+    </li>
+    <li class="breadcrumb-item active">FAQ</li>
+  </ol>
+
+  <div class="mb-4" id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{self.id}}" aria-expanded="true" aria-controls="collapse{{self.id}}">
+            {{self.title}}
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapse{{self.id}}" class="collapse" data-parent="#accordion">
+        <div class="card-body">
+          {{self.body|richtext}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- /.container -->
+{% endblock content %}

@@ -131,13 +131,13 @@ def send_to_discord(sender, **kwargs):
     # First published check
     if page.first_published_at != page.last_published_at:
         return
-    if page.get_parent().title not in ['Articles', 'Guides']:
+    if page.get_parent().title not in ['Articles']:
         return
 
     webhook = Webhook.partial(459579353102286859, 'jqaIWsuE0pPhHzrOrGoiNq7P0Y64B4JU5ZdfP7Lmrcpu2mIF6DC8hd3Jv4y9mya0SBqU', adapter=RequestsWebhookAdapter())
     embed = Embed(type="rich", description='{}'.format(page.description), colour=0x90E050)
-    embed.set_author(name=page.title, url=page.full_url, icon_url="https://i.imgur.com/9UsXLG0.png")
-    embed.set_thumbnail(url=page.articlepage.feed_image.get_rendition('fill-800x600').url)
+    embed.set_author(name=page.title, url='{}{}'.format('https://fortnite-stw.fr', page.url), icon_url="https://i.imgur.com/9UsXLG0.png")
+    embed.set_thumbnail(url='{}{}'.format('https://fortnite-stw.fr',page.articlepage.feed_image.get_rendition('fill-800x600').url))
     embed.set_footer(text='{} | {}'.format(page.owner.username, (page.first_published_at).strftime('%A %d %B - %H:%M').title()))
     webhook.send(username='Fortnite STW FR', embed=embed)
 

@@ -1,0 +1,45 @@
+{% extends "mainapp/base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block title %}{{ self.title }}{% endblock title %}
+
+{% block content %}
+	{% if self.feed_image %}
+	{% image self.feed_image fill-1920x299-c100 as banner_image %}
+	<header style="height: {{banner_image.height}}px; padding-bottom: 20px">
+		<div class='article-thumbnail' style="background: url({{banner_image.url}}); height: {{banner_image.height}}px;")>
+			
+		</div>
+		<h1 class='article-title' style="line-height: {{banner_image.height}}px">{{ self.title }}</p>
+	</header>
+	{% else %}
+	<header style="padding-top: 10px">
+		<h1 style="text-align: center;">{{ self.title }}</p>
+	</header>
+	{% endif %}
+	<div class='container'>
+		<hr>
+		<p style='text-align: center'>
+			<span class='fas fa-user'></span>
+			{{self.owner}}&nbsp;
+			<span class='far fa-clock'></span>
+			{{self.first_published_at}}
+		</p>
+		<hr>
+		<div class="col-md-10 mx-auto">
+			{% with blocks=self.body %}
+			{% for block in blocks %}
+			{% if block.block_type == 'heading' %}
+			<h2>{{ block.value }}</h2>
+			{% else %}
+			<section class="block-{{ block.block_type }}">
+				{{ block }}
+			</section>
+			{% endif %}
+			{% endfor %}
+
+			{% endwith %}
+		</div>
+		<hr>
+	</div>
+	{% endblock %}
