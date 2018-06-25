@@ -88,7 +88,7 @@ class GuidePage(Page):
     ]
 
     @property
-    def article_page(self):
+    def guide_page(self):
         return self.get_parent().specific
 
     def get_context(self, request, *args, **kwargs):
