@@ -92,8 +92,8 @@ class GuidePage(Page):
         return self.get_parent().specific
 
     def get_context(self, request, *args, **kwargs):
-        context = super(ArticlePage, self).get_context(request, *args, **kwargs)
-        context['article_page'] = self.article_page
+        context = super(GuidePage, self).get_context(request, *args, **kwargs)
+        context['guide_page'] = self.guide_page
         return context
 
 class AnswerPage(Page):
