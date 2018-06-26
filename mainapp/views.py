@@ -13,7 +13,7 @@ import requests
 
 def index(request):
     """Return Index View"""
-    articles = ArticlePage.objects.all().order_by('-first_published_at')
+    articles = ArticlePage.objects.all().filter(first_published_at__isnull=False).order_by('-first_published_at')
     paginator = Paginator(articles, 6)
     page = request.GET.get('page')
     context = {
@@ -27,7 +27,7 @@ def about(request):
 
 def guides(request):
     """Return Guides View"""
-    articles = GuidePage.objects.all().order_by('-first_published_at')
+    articles = GuidePage.objects.all().filter(first_published_at__isnull=False).order_by('-first_published_at')
     paginator = Paginator(articles, 6)
     page = request.GET.get('page')
     context = {
@@ -47,7 +47,7 @@ def streamers(request):
 
 def faq(request):
     """Return FAQ View"""
-    answers = AnswerPage.objects.all()
+    answers = AnswerPage.objects.filter(first_published_at__isnull=False).order_by('title')
     context = {
         'answers': answers
     }
