@@ -11,13 +11,6 @@
     <small>Tout savoir sur les mécaniques du jeu</small>
   </h1>
 
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="{% url 'mainapp:index' %}">Accueil</a>
-    </li>
-    <li class="breadcrumb-item active">Guides</li>
-  </ol>
-
   <!-- Image Header -->
   <img class="img-fluid rounded mb-4" src="https://i.imgur.com/XunHg60.jpg" alt="">
 
@@ -25,13 +18,13 @@
   <div class="row">
   {% for guide in last_guides %}
     <div class="col-lg-4 mb-4">
-      <div class="card h-100">
+      <div class="card h-100 text-white">
         <h4 class="card-header">{{ guide.title }}</h4>
         <div class="card-body">
           <p class="card-text">{{ guide.guidepage.description }}</p>
         </div>
         <div class="card-footer">
-          <a href="{{ guide.url }}" class="btn btn-primary">Lire</a>
+          <a href="{{ guide.url }}" class="btn btn-info">Lire</a>
         </div>
       </div>
     </div>

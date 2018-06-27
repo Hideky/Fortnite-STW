@@ -29,10 +29,11 @@ else:
     DEBUG = True
 
 ALLOWED_HOSTS = []
-
+SITE_NAME = 'fortnite-stw.fr'
+DISCORD_WEBHOOK_ID = 0
+DISCORD_WEBHOOK_TOKEN = ''
 
 # Application definition
-
 INSTALLED_APPS = [
     'mainapp.apps.MainappConfig',
 

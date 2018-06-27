@@ -11,13 +11,6 @@
     <small>Questions courantes</small>
   </h1>
 
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="{% url 'mainapp:index' %}">Accueil</a>
-    </li>
-    <li class="breadcrumb-item active">FAQ</li>
-  </ol>
-
   <div class="mb-4" id="accordion">
   {% for answer in answers %}
     <div class="card">

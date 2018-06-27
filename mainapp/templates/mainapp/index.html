@@ -6,7 +6,7 @@
 <header>
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-      {% for article in last_articles|slice:':3' %}
+      {% for article in last_articles %}
       {% image article.articlepage.feed_image original as banner_image %}
       <!-- Slide One - Set the background image for this slide in the line below -->
       {% if forloop.counter0 == 0 %}
@@ -44,16 +44,22 @@
 
 <!-- Page Content -->
 <div class="container">
-
+  <hr>
   <h1 class="my-4">Nos Articles</h1>
 
   <!-- Articles Section -->
   <div class="row">
-    {% for article in last_articles %}
+    {% for article in articles %}
     {% image article.articlepage.feed_image fill-700x400-c100 as banner_image %}
     <div class="col-lg-4 col-sm-6 portfolio-item">
       <div class="card h-100">
-        <a href="#"><img class="card-img-top" src="{{banner_image.url}}" alt=""></a>
+        <a href="{{article.url}}"><img class="card-img-top" src="{{banner_image.url}}" alt=""></a>
+        <div class="card-header" style="text-align: center">
+          <span class='fas fa-user'></span>
+          {{article.owner}}&nbsp;
+          <span class='far fa-clock'></span>
+          {{article.first_published_at|date:"d F Y"}}
+        </div>
         <div class="card-body">
           <h4 class="card-title">
             <a href="{{article.url}}">{{article.title}}</a>

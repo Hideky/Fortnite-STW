@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.conf import settings
 from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.core import blocks
@@ -23,6 +23,7 @@ else:
 
 # Create your models here.
 class ArticlePage(Page):
+    """ArticlePage model using to represent any Article on the site"""
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -60,6 +61,7 @@ class ArticlePage(Page):
         return context
 
 class GuidePage(Page):
+    """GuidePage model using to represent any Guide on the site"""
     feed_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -97,6 +99,7 @@ class GuidePage(Page):
         return context
 
 class AnswerPage(Page):
+    """AnswerPage model using to represent any Answer in FAQ page on the site"""
     body = RichTextField()
 
     content_panels = Page.content_panels + [
@@ -113,19 +116,23 @@ class AnswerPage(Page):
         return context
 
 class HomePage(Page):
+    """HomePage model using as root directory for the other pages directory"""
     subpage_types = ['ArticlesPage', 'GuidesPage', 'FAQPage']
 
 class ArticlesPage(Page):
+    """ArticlesPage model using ArticlePage directory"""
     subpage_types = ['ArticlePage']
 
 class GuidesPage(Page):
+    """GuidesPage model using GuidePage directory"""
     subpage_types = ['GuidePage']
 
 class FAQPage(Page):
+    """FAQPage model using AnswerPage directory"""
     subpage_types = ['AnswerPage']
 
-# Let everyone know when a new page is published
 def send_to_discord(sender, **kwargs):
+    # Let everyone know when a new page is published using Discord Webhook
     page = kwargs['instance']
 
     # First published check
@@ -134,10 +141,10 @@ def send_to_discord(sender, **kwargs):
     if page.get_parent().title not in ['Articles']:
         return
 
-    webhook = Webhook.partial(459579353102286859, 'jqaIWsuE0pPhHzrOrGoiNq7P0Y64B4JU5ZdfP7Lmrcpu2mIF6DC8hd3Jv4y9mya0SBqU', adapter=RequestsWebhookAdapter())
+    webhook = Webhook.partial(settings.DISCORD_WEBHOOK_ID, settings.DISCORD_WEBHOOK_TOKEN, adapter=RequestsWebhookAdapter())
     embed = Embed(type="rich", description='{}'.format(page.description), colour=0x90E050)
-    embed.set_author(name=page.title, url='{}{}'.format('https://fortnite-stw.fr', page.url), icon_url="https://i.imgur.com/9UsXLG0.png")
-    embed.set_thumbnail(url='{}{}'.format('https://fortnite-stw.fr',page.articlepage.feed_image.get_rendition('fill-800x600').url))
+    embed.set_author(name=page.title, url='https://{}{}'.format(settings.SITE_NAME, page.url), icon_url="https://i.imgur.com/9UsXLG0.png")
+    embed.set_thumbnail(url='https://{}{}'.format(settings.SITE_NAME, page.articlepage.feed_image.get_rendition('fill-800x600').url))
     embed.set_footer(text='{} | {}'.format(page.owner.username, (page.first_published_at).strftime('%A %d %B - %H:%M').title()))
     webhook.send(username='Fortnite STW FR', embed=embed)
 

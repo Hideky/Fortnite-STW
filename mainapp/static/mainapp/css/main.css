@@ -19,20 +19,19 @@ body {
   }
 }
 
-.navbar, footer {
+/*.navbar, footer {
   background: #202020 !important;
-}
+}*/
 
 .navbar-brand {
   font-family: "Burbank";
   font-size: 30px;
   letter-spacing: 0.5px;
-  color: #f1f1f1;
   line-height: 30px;
 }
 
 .carousel-item {
-  height: 40vh;
+  height: 30vh;
   min-height: 200px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
@@ -51,6 +50,7 @@ body {
 }
 
 .carousel-description {
+  text-shadow: 2px 2px #000000;
   font-size: 20px;
 }
 

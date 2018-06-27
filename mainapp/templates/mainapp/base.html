@@ -6,13 +6,16 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta http-equiv="Content-Language" content="fr-FR">
+    <meta property="og:image" content="{% static 'mainapp/img/favicon.png' %}">
+    <meta http-equiv="description" name="description" content="Votre source d'information francophone sur le mode Sauver le Monde de Fortnite !">
+    <meta http-equiv="keywords" name="keywords" content="fortnite, sauver le monde, save the world, pve, guides, faq, actualité, streamers">
+    <meta name="author" content="Fortnite STW FR">
     <link rel="icon" type="image/png" href="{% static 'mainapp/img/favicon.png' %}" />
     <title>{% block title %}{% endblock %}</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="{% static 'mainapp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'mainapp/vendor/bootstrap/css/bootstrap.css' %}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="{% static 'mainapp/css/main.css' %}" rel="stylesheet">
@@ -22,7 +25,7 @@
   <body>
 
     <!-- Navigation -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark fixed-top">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary fixed-top">
       <div class="container">
         <a class="navbar-brand" href="{% url 'mainapp:index' %}">Fortnite-STW.FR</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,15 +54,15 @@
     </nav>
 
     {%block content %}{%endblock%}
-
+    <iframe src="https://discordapp.com/widget?id=459515720049623051&theme=dark" width="300" height="500" allowtransparency="true" frameborder="0" style='position: fixed; right: 0px; bottom: 0px;'></iframe>
     </div>
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-4">
+    <footer class="py-4 bg-primary">
       <div class="container">
-        <p class="m-0 text-center text-white">&copy; Copyright 2018 Fortnite STW FR</p>
-        <p class="m-0 text-center text-white">Hideky</p>
+        <p class="m-0 text-center">&copy; 2018 Fortnite STW FR</p>
+        <p class="m-0 text-center blockquote-footer">Toutes les marques contenues dans ce site sont la propriété de leurs propriétaires respectifs.</p>
       </div>
       <!-- /.container -->
     </footer>

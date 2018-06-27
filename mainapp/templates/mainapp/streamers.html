@@ -10,13 +10,6 @@
     <small>Twitch</small>
   </h1>
 
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="{% url 'mainapp:index' %}">Accueil</a>
-    </li>
-    <li class="breadcrumb-item active">Streamers</li>
-  </ol>
-
   <div class="row">
     {% if not streamers %}
       <div class="col-lg-12 col-sm-12 h-50">

@@ -17,7 +17,8 @@ def index(request):
     paginator = Paginator(articles, 6)
     page = request.GET.get('page')
     context = {
-        'last_articles': paginator.get_page(page)
+        'articles': paginator.get_page(page),
+        'last_articles': articles[:3]
     }
     return render(request, 'mainapp/index.html', context)
 
