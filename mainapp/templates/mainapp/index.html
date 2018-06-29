@@ -7,7 +7,6 @@
   <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       {% for article in last_articles %}
-      {% image article.articlepage.feed_image original as banner_image %}
       <!-- Slide One - Set the background image for this slide in the line below -->
       {% if forloop.counter0 == 0 %}
      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -18,7 +17,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       {% for article in last_articles %}
-      {% image article.articlepage.feed_image original as banner_image %}
+      {% image article.articlepage.feed_image fill-1920x300-c100 as banner_image %}
       <!-- Slide One - Set the background image for this slide in the line below -->
       {% if forloop.counter0 == 0 %}
       <div class="carousel-item active" style="background-image: url('{{banner_image.url}}')">
