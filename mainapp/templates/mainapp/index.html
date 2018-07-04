@@ -17,18 +17,17 @@
     </ol>
     <div class="carousel-inner" role="listbox">
       {% for article in last_articles %}
-      {% image article.articlepage.feed_image fill-1920x300-c100 as banner_image %}
-      <!-- Slide One - Set the background image for this slide in the line below -->
-      {% if forloop.counter0 == 0 %}
-      <div class="carousel-item active" style="background-image: url('{{banner_image.url}}')">
-      {% else %}
-      <div class="carousel-item" style="background-image: url('{{banner_image.url}}')">
-      {% endif %}
-        <div class="carousel-caption d-none d-md-block">
-          <a href="{{article.url}}"><h3 class="carousel-title">{{ article.title }}</h3></a>
-          <p class="carousel-description">{{ article.articlepage.description }}</p>
-        </div>
-      </div>
+          {% image article.articlepage.feed_image fill-1920x300-c100 as banner_image %}
+          {% if forloop.counter0 == 0 %}
+          <div class="carousel-item active" style="background-image: url('{{banner_image.url}}')">
+          {% else %}
+          <div class="carousel-item" style="background-image: url('{{banner_image.url}}')">
+          {% endif %}
+            <div class="carousel-caption d-none d-md-block">
+              <a href="{{article.url}}"><h3 class="carousel-title">{{ article.title }}</h3></a>
+              <p class="carousel-description">{{ article.articlepage.description }}</p>
+            </div>
+          </div>
       {% endfor %}
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>

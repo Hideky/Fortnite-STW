@@ -133,6 +133,9 @@ class FAQPage(Page):
 
 def send_to_discord(sender, **kwargs):
     # Let everyone know when a new page is published using Discord Webhook
+    if settings.DEBUG or settings.TESTING:
+        return
+        
     page = kwargs['instance']
 
     # First published check
@@ -144,7 +147,8 @@ def send_to_discord(sender, **kwargs):
     webhook = Webhook.partial(settings.DISCORD_WEBHOOK_ID, settings.DISCORD_WEBHOOK_TOKEN, adapter=RequestsWebhookAdapter())
     embed = Embed(type="rich", description='{}'.format(page.description), colour=0x90E050)
     embed.set_author(name=page.title, url='https://{}{}'.format(settings.SITE_NAME, page.url), icon_url="https://i.imgur.com/9UsXLG0.png")
-    embed.set_thumbnail(url='https://{}{}'.format(settings.SITE_NAME, page.articlepage.feed_image.get_rendition('fill-800x600').url))
+    if page.articlepage.feed_image:
+        embed.set_thumbnail(url='https://{}{}'.format(settings.SITE_NAME, page.articlepage.feed_image.get_rendition('fill-800x600').url))
     embed.set_footer(text='{} | {}'.format(page.owner.username, (page.first_published_at).strftime('%A %d %B - %H:%M').title()))
     webhook.send(username='Fortnite STW FR', embed=embed)
 
