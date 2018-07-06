@@ -8,7 +8,3 @@ Lien du site: [Fortnite-STW.fr](https://fortnite-stw.fr/)
 
 * [Django](https://www.djangoproject.com/) - Le framework web utilisé
 * [Wagtail](https://wagtail.io/) - CMS pour la rédaction et la diffusion des articles et guides de l'application
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
