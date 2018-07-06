@@ -29,7 +29,4 @@ urlpatterns = [
     path('guides/', views.guides, name='guides'),
     path('streamers/', views.streamers, name='streamers'),
     path('faq/', views.faq, name='faq'),
-    # path('signup/', views.signup, name='signup'),
-    # path('account/', views.account, name='account'),
-    # path('logout/', auth_views.logout, name='logout'),
 ]
