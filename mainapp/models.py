@@ -10,7 +10,7 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.embeds.blocks import EmbedBlock
 from wagtail.core.fields import RichTextField
 from wagtail.core.signals import page_published
-from mainapp.blocks import TwoColumnBlock
+from mainapp.blocks import TwoColumnBlock, HeadingBlock
 from discord import Webhook, RequestsWebhookAdapter, Embed
 from datetime import datetime, timedelta
 import locale
@@ -33,7 +33,7 @@ class ArticlePage(Page):
     )
     description = models.CharField(max_length=255)
     body = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
+        ('heading', HeadingBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
         ('two_columns', TwoColumnBlock()),

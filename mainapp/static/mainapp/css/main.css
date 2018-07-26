@@ -80,3 +80,18 @@ body {
   background-size: 100%;
 }
 
+.faq-card {
+    padding: 0.2rem 0.5rem;
+    background-color: #515960;
+}
+
+.faq-title {
+  font-size: 16px;
+}
+
+.fonted-title {
+  font-family: "Burbank";
+  font-size: 36px;
+  letter-spacing: 0.4px;
+  padding-top: 8px;
+}

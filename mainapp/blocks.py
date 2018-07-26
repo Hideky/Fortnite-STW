@@ -35,3 +35,6 @@ class TwoColumnBlock(blocks.StructBlock):
         icon = 'placeholder'
         label = 'Two Columns'
 
+class HeadingBlock(blocks.CharBlock):
+    class Meta:
+        template = 'mainapp/blocks/heading.html'

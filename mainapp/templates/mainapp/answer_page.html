@@ -20,15 +20,15 @@
 
   <div class="mb-4" id="accordion">
     <div class="card">
-      <div class="card-header" id="headingOne">
+      <div class="card-header faq-card" id="headingOne">
         <h5 class="mb-0">
-          <button class="btn btn-link" data-toggle="collapse" data-target="#collapse{{self.id}}" aria-expanded="true" aria-controls="collapse{{self.id}}">
+          <button class="btn btn-link faq-title" data-toggle="collapse" data-target="#collapse{{self.id}}" aria-expanded="true" aria-controls="collapse{{self.id}}">
             {{self.title}}
           </button>
         </h5>
       </div>
 
-      <div id="collapse{{self.id}}" class="collapse" data-parent="#accordion">
+      <div id="collapse{{self.id}}" class="collapse show" data-parent="#accordion">
         <div class="card-body">
           {{self.body|richtext}}
         </div>
