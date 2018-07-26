@@ -71,7 +71,7 @@ class GuidePage(Page):
     )
     description = models.CharField(max_length=255)
     body = StreamField([
-        ('heading', blocks.CharBlock(classname="full title")),
+        ('heading', HeadingBlock(classname="full title")),
         ('paragraph', blocks.RichTextBlock()),
         ('image', ImageChooserBlock()),
         ('two_columns', TwoColumnBlock()),
